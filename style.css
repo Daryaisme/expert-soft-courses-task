@@ -45,6 +45,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 15px;
   flex-wrap: wrap;
 }
 .item {
@@ -84,4 +85,13 @@
 .item__price {
   margin-top: 10px;
   font-weight: 700;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.item__price_old {
+  text-decoration: line-through;
+}
+.item__price_current:not(:only-child) {
+  color: rgb(255, 59, 59);
 }
