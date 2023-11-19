@@ -1,0 +1,112 @@
+@font-face {
+  font-family: Roboto;
+  src: url(assets/fonts/Roboto/Roboto-Regular.ttf);
+}
+@font-face {
+  font-family: Roboto;
+  src: url(assets/fonts/Roboto/Roboto-Bold.ttf);
+  font-weight: 700;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(assets/fonts/Roboto/Roboto-Thin.ttf);
+  font-weight: 200;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Roboto;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+}
+
+.container {
+  width: 250px;
+  margin: 0 auto;
+}
+.header__container,
+.footer__container {
+  width: 100%;
+  padding: 10px 20px;
+}
+.header__title {
+  font-size: 18px;
+  color: rgb(173, 173, 173);
+}
+.header__title-span {
+  font-size: 28px;
+  vertical-align: middle;
+  color: rgb(255, 166, 0);
+}
+.main {
+  margin: 20px 0;
+}
+.main__items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.item {
+  padding: 15px;
+  background: rgb(239, 239, 239);
+  /* background: linear-gradient(135deg, rgb(255, 166, 0), rgb(255, 255, 0)); */
+}
+.item__container {
+  padding: 15px;
+  background: rgb(255, 255, 255);
+  border: 1px rgb(255, 166, 0) solid;
+}
+.item__image {
+  height: 250px;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  overflow: hidden;
+}
+.item__image-img {
+  height: 250px;
+}
+.item__about {
+  margin-top: 30px;
+  text-align: center;
+}
+.item__type {
+  color: rgb(173, 173, 173);
+  text-transform: uppercase;
+  font-weight: 200;
+}
+.item__author {
+  color: rgb(173, 173, 173);
+  font-size: 12px;
+}
+.item__price {
+  margin-top: 10px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.item__price_old {
+  text-decoration: line-through;
+}
+.item__price_current:not(:only-child) {
+  color: rgb(255, 59, 59);
+}
+.footer__info {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.info__link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.link-img {
+  height: 35px;
+}
