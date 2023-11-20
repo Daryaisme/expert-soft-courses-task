@@ -51,6 +51,7 @@
 }
 .item {
   position: relative;
+  max-width: 260px;
   padding: 15px;
   background: rgb(239, 239, 239);
   text-align: center;
@@ -77,6 +78,14 @@
 }
 .item__about {
   margin-top: 48px;
+}
+.item__type,
+.item__author,
+.item__title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  white-space: nowrap;
 }
 .item:hover .item__about {
   margin-top: 8px;
