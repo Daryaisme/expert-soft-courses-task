@@ -45,10 +45,9 @@
 }
 .main__items {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 15px;
   flex-wrap: wrap;
+  gap: 15px;
 }
 .item {
   position: relative;
@@ -119,29 +118,28 @@
 }
 .item__button {
   position: absolute;
-  left:50%;
-  transform:translate(-50%, -50%);
+  left: 50%;
+  transform: translateX(-50%);
   text-transform: uppercase;
   background: rgb(190, 190, 190);
   border: none;
   padding: 8px 17px;
   width: 160px;
   cursor: pointer;
-  bottom: -45px;
+  bottom: -28px;
   opacity: 0;
+  visibility: hidden;
   animation: disappearance 0.3s ease-in-out;
 }
 .item:hover .item__button {
-  bottom: -5px;
+  bottom: 12px;
   opacity: 1;
+  visibility: visible;
   animation: appearance 0.3s ease-in-out;
 }
 
 @keyframes appearance {
-  0% {
-    opacity: 0;
-  }
-  50% {
+  0%, 50% {
     opacity: 0;
   }
   100% {
@@ -153,10 +151,7 @@
   0% {
     opacity: 1;
   }
-  50% {
-    opacity: 0;
-  }
-  100% {
+  50%, 100% {
     opacity: 0;
   }
 }
