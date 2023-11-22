@@ -49,6 +49,7 @@
 .main__items {
   display: flex;
   justify-content: center;
+  -ms-flex-pack: start;      /* эта штучка выровняла последний ряд в IE наконец-то */
   flex-wrap: wrap;
   width: 300px;
   margin: 0 auto;
