@@ -26,6 +26,9 @@
   width: 90vw;
   margin: 0 auto;
 }
+.header {
+  margin-bottom: 20px;
+}
 .header__container,
 .footer__container {
   width: 100%;
@@ -46,15 +49,21 @@
 .main__items {
   display: flex;
   justify-content: center;
+  -ms-flex-pack: start;      /* эта штучка выровняла последний ряд в IE наконец-то */
   flex-wrap: wrap;
-  gap: 15px;
+  width: 300px;
+  margin: 0 auto;
 }
 .item {
   position: relative;
-  max-width: 260px;
+  width: 260px;
   padding: 15px;
   background: rgb(239, 239, 239);
   text-align: center;
+  margin-bottom: 15px;
+}
+.item:last-child {
+  margin-bottom: 0;
 }
 .item__container {
   padding: 15px;
@@ -68,12 +77,13 @@
 .item__image {
   height: 250px;
   width: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+  position: relative;
   overflow: hidden;
 }
 .item__image-img {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   height: 250px;
 }
 .item__about {
@@ -104,23 +114,23 @@
   font-weight: 700;
   display: flex;
   justify-content: center;
-  gap: 10px;
 }
 .item__price_old {
   text-decoration: line-through;
 }
 .item__price_current:not(:only-child) {
   color: rgb(255, 59, 59);
+  margin-right: 10px;
+}
+.footer {
+  margin-top: 20px;
 }
 .footer__info {
   display: flex;
   justify-content: center;
-  gap: 10px;
 }
-.info__link {
-  display: flex;
-  align-items: center;
-  gap: 5px;
+.footer__link:not(:last-child) {
+  margin-right: 10px;
 }
 .link-img {
   height: 35px;
@@ -165,25 +175,36 @@
   }
 }
 
-@media (min-width: 639px) {
-  .container {
-    width: 85vw;
-  }
-  .header__container,
-  .footer__container {
-    width: 100%;
-  }
+@media (min-width: 595px) {
   .header__title {
-    font-size: 24px;
+    font-size: 22px;
   }
   .header__title-span {
-    font-size: 36px;
+    font-size: 32px;
+  }
+  .main__items {
+    width: 535px;
+  }
+  .item:nth-child(2n + 1) {
+    margin-right: 15px;
   }
 }
 
-@media (min-width: 999px) {
+@media (min-width: 915px) {
+  .header__title {
+    font-size: 26px;
+  }
+  .header__title-span {
+    font-size: 38px;
+  }
   .main__items {
-    gap: 30px;
+    width: 810px;
+  }
+  .item:nth-child(2n + 1) {
+    margin-right: 0;
+  }
+  .item:not(:nth-child(3n)) {
+    margin-right: 15px;
   }
 }
 
@@ -196,5 +217,24 @@
   }
   .header__title-span {
     font-size: 42px;
+  }
+}
+
+@media (min-width: 1220px) {
+  .main__items {
+    width: 1085px;
+  }
+  .item:not(:nth-child(3n)) {
+    margin-right: 0;
+  }
+  .item:not(:nth-child(4n)) {
+    margin-right: 15px;
+  }
+}
+
+@media (min-width: 595px) {
+  .item:last-child {
+    margin-right: auto;
+    margin-bottom: 0;
   }
 }
