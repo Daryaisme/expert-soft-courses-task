@@ -105,6 +105,14 @@
   text-transform: uppercase;
   font-weight: 200;
 }
+.item__rating {
+  display: flex;
+  width: fit-content;
+  margin: 5px auto;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent;
+}
 .item__author {
   color: rgb(173, 173, 173);
   font-size: 12px;
@@ -149,6 +157,9 @@
   opacity: 0;
   visibility: hidden;
   animation: disappearance 0.3s ease-in-out;
+}
+.item__button::before {
+  margin-right: 5px;
 }
 .item:hover .item__button {
   bottom: 12px;
