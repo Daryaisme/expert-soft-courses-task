@@ -66,6 +66,7 @@
   margin-bottom: 0;
 }
 .item__container {
+  position: relative;
   padding: 15px;
   background: rgb(255, 255, 255);
   border: 1px rgb(255, 166, 0) solid;
@@ -73,6 +74,49 @@
 }
 .item:hover .item__container {
   margin-bottom: 40px;
+}
+.item__icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  position: absolute;
+  z-index: 1;
+  right: -20px;
+  top: 20px;
+  opacity: 0;
+  visibility: hidden;
+  animation: disappearance 0.3s ease-in-out;
+}
+.item:hover .item__icons {
+  right: 10px;
+  opacity: 1;
+  visibility: visible;
+  animation: appearance 0.3s ease-in-out;
+}
+.item__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: rgb(239, 239, 239);
+  color: rgb(122, 122, 122);
+  cursor: pointer;
+}
+.item__icon:hover {
+  width: 45px;
+  height: 45px;
+}
+.item__icon-eye:hover {
+  color: rgb(255, 215, 72);
+}
+.item__icon-heart:hover {
+  color: rgb(255, 59, 59);
+}
+.item__icon-scales:hover {
+  color: rgb(59, 194, 59);
 }
 .item__image {
   height: 250px;
