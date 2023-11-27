@@ -103,20 +103,24 @@
   justify-content: space-around;
   background: rgb(239, 239, 239);
   color: rgb(122, 122, 122);
+  border: 1px rgb(210, 210, 210) solid;
   cursor: pointer;
 }
-.item__icon:hover {
-  width: 45px;
-  height: 45px;
+.item__icon:not(.item__icon_active)[data-icon-type="icon-eye"]:hover,
+.item__icon_active[data-icon-type="icon-eye"] {
+  color: rgb(255, 228, 108);
 }
-.item__icon-eye:hover {
-  color: rgb(255, 215, 72);
-}
-.item__icon-heart:hover {
+.item__icon:not(.item__icon_active)[data-icon-type="icon-heart"]:hover,
+.item__icon_active[data-icon-type="icon-heart"] {
   color: rgb(255, 59, 59);
 }
-.item__icon-scales:hover {
-  color: rgb(59, 194, 59);
+.item__icon:not(.item__icon_active)[data-icon-type="icon-scales"]:hover,
+.item__icon_active[data-icon-type="icon-scales"] {
+  color: rgb(41, 199, 41);
+}
+.item__icon_active:hover {
+  background: rgb(205, 205, 205);
+  color: rgb(122, 122, 122);
 }
 .item__image {
   height: 250px;
