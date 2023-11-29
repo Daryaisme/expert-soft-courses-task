@@ -66,6 +66,7 @@
   margin-bottom: 0;
 }
 .item__container {
+  position: relative;
   padding: 15px;
   background: rgb(255, 255, 255);
   border: 1px rgb(255, 166, 0) solid;
@@ -73,6 +74,53 @@
 }
 .item:hover .item__container {
   margin-bottom: 40px;
+}
+.item__icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  position: absolute;
+  z-index: 1;
+  right: -20px;
+  top: 20px;
+  opacity: 0;
+  visibility: hidden;
+  animation: disappearance 0.3s ease-in-out;
+}
+.item:hover .item__icons {
+  right: 10px;
+  opacity: 1;
+  visibility: visible;
+  animation: appearance 0.3s ease-in-out;
+}
+.item__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: rgb(239, 239, 239);
+  color: rgb(122, 122, 122);
+  border: 1px rgb(210, 210, 210) solid;
+  cursor: pointer;
+}
+.item__icon:not(.item__icon_active)[data-icon-type="icon-eye"]:hover,
+.item__icon_active[data-icon-type="icon-eye"] {
+  color: rgb(255, 228, 108);
+}
+.item__icon:not(.item__icon_active)[data-icon-type="icon-heart"]:hover,
+.item__icon_active[data-icon-type="icon-heart"] {
+  color: rgb(255, 59, 59);
+}
+.item__icon:not(.item__icon_active)[data-icon-type="icon-scales"]:hover,
+.item__icon_active[data-icon-type="icon-scales"] {
+  color: rgb(41, 199, 41);
+}
+.item__icon_active:hover {
+  background: rgb(205, 205, 205);
+  color: rgb(122, 122, 122);
 }
 .item__image {
   height: 250px;
@@ -87,7 +135,11 @@
   height: 250px;
 }
 .item__about {
-  margin-top: 48px;
+  margin-top: 10px;
+  padding: 10px 0;
+  background: rgb(255, 255, 255);
+  position: relative;
+  z-index: 1;
 }
 .item__type,
 .item__author,
@@ -98,12 +150,20 @@
   white-space: nowrap;
 }
 .item:hover .item__about {
-  margin-top: 8px;
+  margin-top: -30px;
 }
 .item__type {
   color: rgb(173, 173, 173);
   text-transform: uppercase;
   font-weight: 200;
+}
+.item__rating {
+  display: flex;
+  width: fit-content;
+  margin: 5px auto;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent;
 }
 .item__author {
   color: rgb(173, 173, 173);
@@ -149,6 +209,12 @@
   opacity: 0;
   visibility: hidden;
   animation: disappearance 0.3s ease-in-out;
+}
+.item__button:hover {
+  background: rgb(255, 166, 0);
+}
+.item__button::before {
+  margin-right: 5px;
 }
 .item:hover .item__button {
   bottom: 12px;
