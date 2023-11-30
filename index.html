@@ -5,39 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/icons/fontawesome.css">
   <link rel="stylesheet" href="assets/icons/solid.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/styles/main.css">
   <title>Suravtsova | Expert Soft</title>
 </head>
 <body>
   <header class="header">
     <div class="header__container container">
-      <h1 class="header__title"><span class="header__title-span">SB</span> | ShoppeeBooks</h1>
+      <h1 class="header__title"><span class="header__title-abbreviation">SB</span> | ShoppeeBooks</h1>
     </div>
   </header>
   <main class="main">
     <div class="container">
-      <section class="main__items">
-        <article class="item">
-          <div class="item__container">
-            <div class="item__block-new">New</div>
-            <div class="item__icons">
-              <i class="fa-regular fa-eye item__icon" data-icon-type="icon-eye"></i>
-              <i class="fa-regular fa-heart item__icon item__icon_active" data-icon-type="icon-heart"></i>
-              <i class="fa-solid fa-scale-balanced item__icon" data-icon-type="icon-scales"></i>
+      <div class="main__product-tiles">
+        <article class="product-tile">
+          <div class="product-tile__container">
+            <div class="product-tile__block-new">New</div>
+            <div class="product-tile__icons">
+              <i class="fa-regular fa-eye product-tile__icon" data-icon-type="icon-eye"></i>
+              <i class="fa-regular fa-heart product-tile__icon product-tile__icon_active" data-icon-type="icon-heart"></i>
+              <i class="fa-solid fa-scale-balanced product-tile__icon" data-icon-type="icon-scales"></i>
             </div>
-            <div class="item__image">
+            <div class="product-tile__image-container">
               <img 
-                class="item__image-img" 
+                class="product-tile__image" 
                 src="assets/images/roses_a_credit.png" 
                 alt="«Roses a Credit» by Elsa Triolet" 
                 title="«Roses a Credit» by Elsa Triolet"
               >
             </div>
-            <div class="item__about">
-              <p class="item__type">Book</p>
+            <div class="product-tile__about">
+              <div class="product-tile__type">Book</div>
               <!-- Rating: 1.5 -->
               <div 
-                class="item__rating rating" 
+                class="product-tile__rating rating" 
                 style="background: linear-gradient(to right, rgb(255, 215, 72) 30%, rgb(239, 239, 239) 30%);"
               >
                 <i class="fa-solid fa-star rating__star"></i>
@@ -46,35 +46,35 @@
                 <i class="fa-solid fa-star rating__star"></i>
                 <i class="fa-solid fa-star rating__star"></i>
               </div>
-              <p class="item__title">Roses a Credit</p>
-              <div class="item__price-container">
-                <p class="item__price item__price_current">$15.99</p>
+              <h2 class="product-tile__title">Roses a Credit</h2>
+              <div class="product-tile__price-container">
+                <div class="product-tile__price product-tile__price_current">$15.99</div>
               </div>
             </div>
           </div>
-          <button class="item__button fa-solid fa-bag-shopping">Add to cart</button>
+          <button class="product-tile__button button fa-solid fa-bag-shopping">Add to cart</button>
         </article>
-        <article class="item">
-          <div class="item__container">
-            <div class="item__block-new">New</div>
-            <div class="item__icons">
-              <i class="fa-regular fa-eye item__icon" data-icon-type="icon-eye"></i>
-              <i class="fa-regular fa-heart item__icon" data-icon-type="icon-heart"></i>
-              <i class="fa-solid fa-scale-balanced item__icon" data-icon-type="icon-scales"></i>
+        <article class="product-tile">
+          <div class="product-tile__container">
+            <div class="product-tile__block-new">New</div>
+            <div class="product-tile__icons">
+              <i class="fa-regular fa-eye product-tile__icon" data-icon-type="icon-eye"></i>
+              <i class="fa-regular fa-heart product-tile__icon" data-icon-type="icon-heart"></i>
+              <i class="fa-solid fa-scale-balanced product-tile__icon" data-icon-type="icon-scales"></i>
             </div>
-            <div class="item__image">
+            <div class="product-tile__image-container">
               <img
-                class="item__image-img" 
+                class="product-tile__image" 
                 src="assets/images/a_brief_history_of_humankind.jpg" 
                 alt="«A Brief History of Humankind» by Yuval Noah Harari" 
                 title="«A Brief History of Humankind» by Yuval Noah Harari" 
               >
             </div>
-            <div class="item__about">
-              <p class="item__type">Book</p>
+            <div class="product-tile__about">
+              <div class="product-tile__type">Book</div>
               <!-- Rating: 3.2 -->
               <div 
-                class="item__rating rating" 
+                class="product-tile__rating rating" 
                 style="background: linear-gradient(to right, rgb(255, 215, 72) 64%, rgb(239, 239, 239) 64%);"
               >
                 <i class="fa-solid fa-star rating__star"></i>
@@ -83,35 +83,35 @@
                 <i class="fa-solid fa-star rating__star"></i>
                 <i class="fa-solid fa-star rating__star"></i>
               </div>
-              <p class="item__title">A Brief History of Humankind</p>
-              <div class="item__price-container">
-                <p class="item__price item__price_current">$28.99</p>
+              <h2 class="product-tile__title">A Brief History of Humankind</h2>
+              <div class="product-tile__price-container">
+                <div class="product-tile__price product-tile__price_current">$28.99</div>
               </div>
             </div>
           </div>
-          <button class="item__button fa-solid fa-bag-shopping">Add to cart</button>
+          <button class="product-tile__button button fa-solid fa-bag-shopping">Add to cart</button>
         </article>
-        <article class="item">
-          <div class="item__container">
-            <div class="item__block-new">New</div>
-            <div class="item__icons">
-              <i class="fa-regular fa-eye item__icon item__icon_active" data-icon-type="icon-eye"></i>
-              <i class="fa-regular fa-heart item__icon" data-icon-type="icon-heart"></i>
-              <i class="fa-solid fa-scale-balanced item__icon" data-icon-type="icon-scales"></i>
+        <article class="product-tile">
+          <div class="product-tile__container">
+            <div class="product-tile__block-new">New</div>
+            <div class="product-tile__icons">
+              <i class="fa-regular fa-eye product-tile__icon product-tile__icon_active" data-icon-type="icon-eye"></i>
+              <i class="fa-regular fa-heart product-tile__icon" data-icon-type="icon-heart"></i>
+              <i class="fa-solid fa-scale-balanced product-tile__icon" data-icon-type="icon-scales"></i>
             </div>
-            <div class="item__image">
+            <div class="product-tile__image-container">
               <img
-                class="item__image-img" 
+                class="product-tile__image" 
                 src="assets/images/gone_with_the_wind.png" 
                 alt="«Gone With the Wind» by Margaret Mitchell" 
                 title="«Gone With the Wind» by Margaret Mitchell" 
               >
             </div>
-            <div class="item__about">
-              <p class="item__type">Duology</p>
+            <div class="product-tile__about">
+              <div class="product-tile__type">Duology</div>
               <!-- Rating: 4.7 -->
               <div 
-                class="item__rating rating" 
+                class="product-tile__rating rating" 
                 style="background: linear-gradient(to right, rgb(255, 215, 72) 94%, rgb(239, 239, 239) 94%);"
               >
                 <i class="fa-solid fa-star rating__star"></i>
@@ -120,35 +120,35 @@
                 <i class="fa-solid fa-star rating__star"></i>
                 <i class="fa-solid fa-star rating__star"></i>
               </div>
-              <p class="item__title">Gone With the Wind</p>
-              <div class="item__price-container">
-                <p class="item__price item__price_current">$23</p>
-                <p class="item__price item__price_old">$32.99</p>
+              <h2 class="product-tile__title">Gone With the Wind</h2>
+              <div class="product-tile__price-container">
+                <div class="product-tile__price product-tile__price_current">$23</div>
+                <div class="product-tile__price product-tile__price_old">$32.99</div>
               </div>
             </div>
           </div>
-          <button class="item__button fa-solid fa-bag-shopping">Add to cart</button>
+          <button class="product-tile__button button fa-solid fa-bag-shopping">Add to cart</button>
         </article>
-        <article class="item">
-          <div class="item__container">
-            <div class="item__icons">
-              <i class="fa-regular fa-eye item__icon" data-icon-type="icon-eye"></i>
-              <i class="fa-regular fa-heart item__icon item__icon_active" data-icon-type="icon-heart"></i>
-              <i class="fa-solid fa-scale-balanced item__icon item__icon_active" data-icon-type="icon-scales"></i>
+        <article class="product-tile">
+          <div class="product-tile__container">
+            <div class="product-tile__icons">
+              <i class="fa-regular fa-eye product-tile__icon" data-icon-type="icon-eye"></i>
+              <i class="fa-regular fa-heart product-tile__icon product-tile__icon_active" data-icon-type="icon-heart"></i>
+              <i class="fa-solid fa-scale-balanced product-tile__icon product-tile__icon_active" data-icon-type="icon-scales"></i>
             </div>
-            <div class="item__image">
+            <div class="product-tile__image-container">
               <img
-                class="item__image-img" 
+                class="product-tile__image" 
                 src="assets/images/the_daughter_of_time.png" 
                 alt="«The Daughter of Time» by Josephine Tey" 
                 title="«The Daughter of Time» by Josephine Tey" 
               >
             </div>
-            <div class="item__about">
-              <p class="item__type">Book</p>
+            <div class="product-tile__about">
+              <div class="product-tile__type">Book</div>
               <!-- Rating: 2.8 -->
               <div 
-                class="item__rating rating" 
+                class="product-tile__rating rating" 
                 style="background: linear-gradient(to right, rgb(255, 215, 72) 56%, rgb(239, 239, 239) 56%);"
               >
                 <i class="fa-solid fa-star rating__star"></i>
@@ -157,35 +157,35 @@
                 <i class="fa-solid fa-star rating__star"></i>
                 <i class="fa-solid fa-star rating__star"></i>
               </div>
-              <p class="item__title">The Daughter of Time</p>
-              <div class="item__price-container">
-                <p class="item__price item__price_current">$12</p>
-                <p class="item__price item__price_old">$13.99</p>
+              <h2 class="product-tile__title">The Daughter of Time</h2>
+              <div class="product-tile__price-container">
+                <div class="product-tile__price product-tile__price_current">$12</div>
+                <div class="product-tile__price product-tile__price_old">$13.99</div>
               </div>
             </div>
           </div>
-          <button class="item__button fa-solid fa-bag-shopping">Add to cart</button>
+          <button class="product-tile__button button fa-solid fa-bag-shopping">Add to cart</button>
         </article>
-        <article class="item">
-          <div class="item__container">
-            <div class="item__icons">
-              <i class="fa-regular fa-eye item__icon" data-icon-type="icon-eye"></i>
-              <i class="fa-regular fa-heart item__icon item__icon_active" data-icon-type="icon-heart"></i>
-              <i class="fa-solid fa-scale-balanced item__icon item__icon_active" data-icon-type="icon-scales"></i>
+        <article class="product-tile">
+          <div class="product-tile__container">
+            <div class="product-tile__icons">
+              <i class="fa-regular fa-eye product-tile__icon" data-icon-type="icon-eye"></i>
+              <i class="fa-regular fa-heart product-tile__icon product-tile__icon_active" data-icon-type="icon-heart"></i>
+              <i class="fa-solid fa-scale-balanced product-tile__icon product-tile__icon_active" data-icon-type="icon-scales"></i>
             </div>
-            <div class="item__image">
+            <div class="product-tile__image-container">
               <img
-                class="item__image-img" 
+                class="product-tile__image" 
                 src="assets/images/three_comrades.jpg" 
                 alt="«Three Comrades» by Erich Maria Remarque" 
                 title="«Three Comrades» by Erich Maria Remarque" 
               >
             </div>
-            <div class="item__about">
-              <p class="item__type">Book</p>
+            <div class="product-tile__about">
+              <div class="product-tile__type">Book</div>
               <!-- Rating:5.0 -->
               <div 
-                class="item__rating rating" 
+                class="product-tile__rating rating" 
                 style="background: linear-gradient(to right, rgb(255, 215, 72) 100%, rgb(239, 239, 239) 100%);"
               >
                 <i class="fa-solid fa-star rating__star"></i>
@@ -194,35 +194,35 @@
                 <i class="fa-solid fa-star rating__star"></i>
                 <i class="fa-solid fa-star rating__star"></i>
               </div>
-              <p class="item__title">Three Comrades</p>
-              <div class="item__price-container">
-                <p class="item__price item__price_current">$10.99</p>
+              <h2 class="product-tile__title">Three Comrades</h2>
+              <div class="product-tile__price-container">
+                <div class="product-tile__price product-tile__price_current">$10.99</div>
               </div>
             </div>
           </div>
-          <button class="item__button fa-solid fa-bag-shopping">Add to cart</button>
+          <button class="product-tile__button button fa-solid fa-bag-shopping">Add to cart</button>
         </article>
-        <article class="item">
-          <div class="item__container">
-            <div class="item__block-new">New</div>
-            <div class="item__icons">
-              <i class="fa-regular fa-eye item__icon item__icon_active" data-icon-type="icon-eye"></i>
-              <i class="fa-regular fa-heart item__icon" data-icon-type="icon-heart"></i>
-              <i class="fa-solid fa-scale-balanced item__icon item__icon_active" data-icon-type="icon-scales"></i>
+        <article class="product-tile">
+          <div class="product-tile__container">
+            <div class="product-tile__block-new">New</div>
+            <div class="product-tile__icons">
+              <i class="fa-regular fa-eye product-tile__icon product-tile__icon_active" data-icon-type="icon-eye"></i>
+              <i class="fa-regular fa-heart product-tile__icon" data-icon-type="icon-heart"></i>
+              <i class="fa-solid fa-scale-balanced product-tile__icon product-tile__icon_active" data-icon-type="icon-scales"></i>
             </div>
-            <div class="item__image">
+            <div class="product-tile__image-container">
               <img
-                class="item__image-img" 
+                class="product-tile__image" 
                 src="assets/images/cloud_atlas.png" 
                 alt="«Cloud Atlas» by David Mitchell" 
                 title="«Cloud Atlas» by David Mitchell" 
               >
             </div>
-            <div class="item__about">
-              <p class="item__type">Book</p>
+            <div class="product-tile__about">
+              <div class="product-tile__type">Book</div>
               <!-- Rating: 2.3 -->
               <div 
-                class="item__rating rating" 
+                class="product-tile__rating rating" 
                 style="background: linear-gradient(to right, rgb(255, 215, 72) 46%, rgb(239, 239, 239) 46%);"
               >
                 <i class="fa-solid fa-star rating__star"></i>
@@ -231,35 +231,35 @@
                 <i class="fa-solid fa-star rating__star"></i>
                 <i class="fa-solid fa-star rating__star"></i>
               </div>
-              <p class="item__title">Cloud Atlas</p>
-              <div class="item__price-container">
-                <p class="item__price item__price_current">$13</p>
-                <p class="item__price item__price_old">$17.99</p>
+              <h2 class="product-tile__title">Cloud Atlas</h2>
+              <div class="product-tile__price-container">
+                <div class="product-tile__price product-tile__price_current">$13</div>
+                <div class="product-tile__price product-tile__price_old">$17.99</div>
               </div>
             </div>
           </div>
-          <button class="item__button fa-solid fa-bag-shopping">Add to cart</button>
+          <button class="product-tile__button button fa-solid fa-bag-shopping">Add to cart</button>
         </article>
-        <article class="item">
-          <div class="item__container">
-            <div class="item__icons">
-              <i class="fa-regular fa-eye item__icon item__icon_active" data-icon-type="icon-eye"></i>
-              <i class="fa-regular fa-heart item__icon item__icon_active" data-icon-type="icon-heart"></i>
-              <i class="fa-solid fa-scale-balanced item__icon item__icon_active" data-icon-type="icon-scales"></i>
+        <article class="product-tile">
+          <div class="product-tile__container">
+            <div class="product-tile__icons">
+              <i class="fa-regular fa-eye product-tile__icon product-tile__icon_active" data-icon-type="icon-eye"></i>
+              <i class="fa-regular fa-heart product-tile__icon product-tile__icon_active" data-icon-type="icon-heart"></i>
+              <i class="fa-solid fa-scale-balanced product-tile__icon product-tile__icon_active" data-icon-type="icon-scales"></i>
             </div>
-            <div class="item__image">
+            <div class="product-tile__image-container">
               <img
-                class="item__image-img" 
+                class="product-tile__image" 
                 src="assets/images/to_kill_a_mockingbird.jpg" 
                 alt="«To Kill a Mockingbird» by Harper Lee" 
                 title="«To Kill a Mockingbird» by Harper Lee" 
               >
             </div>
-            <div class="item__about">
-              <p class="item__type">Book</p>
+            <div class="product-tile__about">
+              <div class="product-tile__type">Book</div>
               <!-- Rating: 3.3 -->
               <div 
-                class="item__rating rating" 
+                class="product-tile__rating rating" 
                 style="background: linear-gradient(to right, rgb(255, 215, 72) 66%, rgb(239, 239, 239) 66%);"
               >
                 <i class="fa-solid fa-star rating__star"></i>
@@ -268,34 +268,34 @@
                 <i class="fa-solid fa-star rating__star"></i>
                 <i class="fa-solid fa-star rating__star"></i>
               </div>
-              <p class="item__title">To Kill a Mockingbird</p>
-              <div class="item__price-container">
-                <p class="item__price item__price_current">$9.99</p>
+              <h2 class="product-tile__title">To Kill a Mockingbird</h2>
+              <div class="product-tile__price-container">
+                <div class="product-tile__price product-tile__price_current">$9.99</div>
               </div>
             </div>
           </div>
-          <button class="item__button fa-solid fa-bag-shopping">Add to cart</button>
+          <button class="product-tile__button button fa-solid fa-bag-shopping">Add to cart</button>
         </article>
-        <article class="item">
-          <div class="item__container">
-            <div class="item__icons">
-              <i class="fa-regular fa-eye item__icon" data-icon-type="icon-eye"></i>
-              <i class="fa-regular fa-heart item__icon" data-icon-type="icon-heart"></i>
-              <i class="fa-solid fa-scale-balanced item__icon" data-icon-type="icon-scales"></i>
+        <article class="product-tile">
+          <div class="product-tile__container">
+            <div class="product-tile__icons">
+              <i class="fa-regular fa-eye product-tile__icon" data-icon-type="icon-eye"></i>
+              <i class="fa-regular fa-heart product-tile__icon" data-icon-type="icon-heart"></i>
+              <i class="fa-solid fa-scale-balanced product-tile__icon" data-icon-type="icon-scales"></i>
             </div>
-            <div class="item__image">
+            <div class="product-tile__image-container">
               <img
-                class="item__image-img" 
+                class="product-tile__image" 
                 src="assets/images/pride_and_prejudice.jpg" 
                 alt="«Pride and Prejudice» by Jane Austen" 
                 title="«Pride and Prejudice» by Jane Austen" 
               >
             </div>
-            <div class="item__about">
-              <p class="item__type">Book</p>
+            <div class="product-tile__about">
+              <div class="product-tile__type">Book</div>
               <!-- Rating: 4.2 -->
               <div 
-                class="item__rating rating" 
+                class="product-tile__rating rating" 
                 style="background: linear-gradient(to right, rgb(255, 215, 72) 84%, rgb(239, 239, 239) 84%);"
               >
                 <i class="fa-solid fa-star rating__star"></i>
@@ -304,35 +304,35 @@
                 <i class="fa-solid fa-star rating__star"></i>
                 <i class="fa-solid fa-star rating__star"></i>
               </div>
-              <p class="item__title">Pride and Prejudice</p>
-              <div class="item__price-container">
-                <p class="item__price item__price_current">$7.99</p>
+              <h2 class="product-tile__title">Pride and Prejudice</h2>
+              <div class="product-tile__price-container">
+                <div class="product-tile__price product-tile__price_current">$7.99</div>
               </div>
             </div>
           </div>
-          <button class="item__button fa-solid fa-bag-shopping">Add to cart</button>
+          <button class="product-tile__button button fa-solid fa-bag-shopping">Add to cart</button>
         </article>
-        <article class="item">
-          <div class="item__container">
-            <div class="item__block-new">New</div>
-            <div class="item__icons">
-              <i class="fa-regular fa-eye item__icon" data-icon-type="icon-eye"></i>
-              <i class="fa-regular fa-heart item__icon item__icon_active" data-icon-type="icon-heart"></i>
-              <i class="fa-solid fa-scale-balanced item__icon" data-icon-type="icon-scales"></i>
+        <article class="product-tile">
+          <div class="product-tile__container">
+            <div class="product-tile__block-new">New</div>
+            <div class="product-tile__icons">
+              <i class="fa-regular fa-eye product-tile__icon" data-icon-type="icon-eye"></i>
+              <i class="fa-regular fa-heart product-tile__icon product-tile__icon_active" data-icon-type="icon-heart"></i>
+              <i class="fa-solid fa-scale-balanced product-tile__icon" data-icon-type="icon-scales"></i>
             </div>
-            <div class="item__image">
+            <div class="product-tile__image-container">
               <img
-                class="item__image-img" 
+                class="product-tile__image" 
                 src="assets/images/the_collector.png" 
                 alt="«The Collector» by John Fowles" 
                 title="«The Collector» by John Fowles" 
               >
             </div>
-            <div class="item__about">
-              <p class="item__type">Book</p>
+            <div class="product-tile__about">
+              <div class="product-tile__type">Book</div>
               <!-- Rating: 1.9 -->
               <div 
-                class="item__rating rating" 
+                class="product-tile__rating rating" 
                 style="background: linear-gradient(to right, rgb(255, 215, 72) 38%, rgb(239, 239, 239) 38%);"
               >
                 <i class="fa-solid fa-star rating__star"></i>
@@ -341,34 +341,34 @@
                 <i class="fa-solid fa-star rating__star"></i>
                 <i class="fa-solid fa-star rating__star"></i>
               </div>
-              <p class="item__title">The Collector</p>
-              <div class="item__price-container">
-                <p class="item__price item__price_current">$8.49</p>
+              <h2 class="product-tile__title">The Collector</h2>
+              <div class="product-tile__price-container">
+                <div class="product-tile__price product-tile__price_current">$8.49</div>
               </div>
             </div>
           </div>
-          <button class="item__button fa-solid fa-bag-shopping">Add to cart</button>
+          <button class="product-tile__button button fa-solid fa-bag-shopping">Add to cart</button>
         </article>
-        <article class="item">
-          <div class="item__container">
-            <div class="item__icons">
-              <i class="fa-regular fa-eye item__icon" data-icon-type="icon-eye"></i>
-              <i class="fa-regular fa-heart item__icon" data-icon-type="icon-heart"></i>
-              <i class="fa-solid fa-scale-balanced item__icon" data-icon-type="icon-scales"></i>
+        <article class="product-tile">
+          <div class="product-tile__container">
+            <div class="product-tile__icons">
+              <i class="fa-regular fa-eye product-tile__icon" data-icon-type="icon-eye"></i>
+              <i class="fa-regular fa-heart product-tile__icon" data-icon-type="icon-heart"></i>
+              <i class="fa-solid fa-scale-balanced product-tile__icon" data-icon-type="icon-scales"></i>
             </div>
-            <div class="item__image">
+            <div class="product-tile__image-container">
               <img
-                class="item__image-img" 
+                class="product-tile__image" 
                 src="assets/images/arc_de_triomphe.jpg" 
                 alt="«Arc de Triomphe» by Erich Maria Remarque" 
                 title="«Arc de Triomphe» by Erich Maria Remarque" 
               >
             </div>
-            <div class="item__about">
-              <p class="item__type">Book</p>
+            <div class="product-tile__about">
+              <div class="product-tile__type">Book</div>
               <!-- Rating: 3.6 -->
               <div 
-                class="item__rating rating" 
+                class="product-tile__rating rating" 
                 style="background: linear-gradient(to right, rgb(255, 215, 72) 72%, rgb(239, 239, 239) 72%);"
               >
                 <i class="fa-solid fa-star rating__star"></i>
@@ -377,36 +377,36 @@
                 <i class="fa-solid fa-star rating__star"></i>
                 <i class="fa-solid fa-star rating__star"></i>
               </div>
-              <p class="item__title">Arc de Triomphe</p>
-              <div class="item__price-container">
-                <p class="item__price item__price_current">$6</p>
-                <p class="item__price item__price_old">$10.99</p>
+              <h2 class="product-tile__title">Arc de Triomphe</h2>
+              <div class="product-tile__price-container">
+                <div class="product-tile__price product-tile__price_current">$6</div>
+                <div class="product-tile__price product-tile__price_old">$10.99</div>
               </div>
             </div>
           </div>
-          <button class="item__button fa-solid fa-bag-shopping">Add to cart</button>
+          <button class="product-tile__button button fa-solid fa-bag-shopping">Add to cart</button>
         </article>
-        <article class="item">
-          <div class="item__container">
-            <div class="item__block-new">New</div>
-            <div class="item__icons">
-              <i class="fa-regular fa-eye item__icon item__icon_active" data-icon-type="icon-eye"></i>
-              <i class="fa-regular fa-heart item__icon" data-icon-type="icon-heart"></i>
-              <i class="fa-solid fa-scale-balanced item__icon" data-icon-type="icon-scales"></i>
+        <article class="product-tile">
+          <div class="product-tile__container">
+            <div class="product-tile__block-new">New</div>
+            <div class="product-tile__icons">
+              <i class="fa-regular fa-eye product-tile__icon product-tile__icon_active" data-icon-type="icon-eye"></i>
+              <i class="fa-regular fa-heart product-tile__icon" data-icon-type="icon-heart"></i>
+              <i class="fa-solid fa-scale-balanced product-tile__icon" data-icon-type="icon-scales"></i>
             </div>
-            <div class="item__image">
+            <div class="product-tile__image-container">
               <img
-                class="item__image-img" 
+                class="product-tile__image" 
                 src="assets/images/love_and_friendship.jpg" 
                 alt="«Love and Friendship» by Jane Austen" 
                 title="«Love and Friendship» by Jane Austen" 
               >
             </div>
-            <div class="item__about">
-              <p class="item__type">Book</p>
+            <div class="product-tile__about">
+              <div class="product-tile__type">Book</div>
               <!-- Rating: 4.5 -->
               <div 
-                class="item__rating rating" 
+                class="product-tile__rating rating" 
                 style="background: linear-gradient(to right, rgb(255, 215, 72) 90%, rgb(239, 239, 239) 90%);"
               >
                 <i class="fa-solid fa-star rating__star"></i>
@@ -415,35 +415,35 @@
                 <i class="fa-solid fa-star rating__star"></i>
                 <i class="fa-solid fa-star rating__star"></i>
               </div>
-              <p class="item__title">Love and Friendship</p>
-              <div class="item__price-container">
-                <p class="item__price item__price_current">$7.49</p>
+              <h2 class="product-tile__title">Love and Friendship</h2>
+              <div class="product-tile__price-container">
+                <div class="product-tile__price product-tile__price_current">$7.49</div>
               </div>
             </div>
           </div>
-          <button class="item__button fa-solid fa-bag-shopping">Add to cart</button>
+          <button class="product-tile__button button fa-solid fa-bag-shopping">Add to cart</button>
         </article>
-        <article class="item">
-          <div class="item__container">
-            <div class="item__block-new">New</div>
-            <div class="item__icons">
-              <i class="fa-regular fa-eye item__icon" data-icon-type="icon-eye"></i>
-              <i class="fa-regular fa-heart item__icon" data-icon-type="icon-heart"></i>
-              <i class="fa-solid fa-scale-balanced item__icon" data-icon-type="icon-scales"></i>
+        <article class="product-tile">
+          <div class="product-tile__container">
+            <div class="product-tile__block-new">New</div>
+            <div class="product-tile__icons">
+              <i class="fa-regular fa-eye product-tile__icon" data-icon-type="icon-eye"></i>
+              <i class="fa-regular fa-heart product-tile__icon" data-icon-type="icon-heart"></i>
+              <i class="fa-solid fa-scale-balanced product-tile__icon" data-icon-type="icon-scales"></i>
             </div>
-            <div class="item__image">
+            <div class="product-tile__image-container">
               <img
-                class="item__image-img" 
+                class="product-tile__image" 
                 src="assets/images/number_9_dream.jpg" 
                 alt="«Number 9 Dream» by David Mitchell" 
                 title="«Number 9 Dream» by David Mitchell" 
               >
             </div>
-            <div class="item__about">
-              <p class="item__type">Book</p>
+            <div class="product-tile__about">
+              <div class="product-tile__type">Book</div>
               <!-- Rating: 3.7 -->
               <div 
-                class="item__rating rating" 
+                class="product-tile__rating rating" 
                 style="background: linear-gradient(to right, rgb(255, 215, 72) 74%, rgb(239, 239, 239) 74%);"
               >
                 <i class="fa-solid fa-star rating__star"></i>
@@ -452,35 +452,35 @@
                 <i class="fa-solid fa-star rating__star"></i>
                 <i class="fa-solid fa-star rating__star"></i>
               </div>
-              <p class="item__title">Number 9 Dream</p>
-              <div class="item__price-container">
-                <p class="item__price item__price_current">$9</p>
-                <p class="item__price item__price_old">$13.99</p>
+              <h2 class="product-tile__title">Number 9 Dream</h2>
+              <div class="product-tile__price-container">
+                <div class="product-tile__price product-tile__price_current">$9</div>
+                <div class="product-tile__price product-tile__price_old">$13.99</div>
               </div>
             </div>
           </div>
-          <button class="item__button fa-solid fa-bag-shopping">Add to cart</button>
+          <button class="product-tile__button button fa-solid fa-bag-shopping">Add to cart</button>
         </article>
-        <article class="item">
-          <div class="item__container">
-            <div class="item__icons">
-              <i class="fa-regular fa-eye item__icon" data-icon-type="icon-eye"></i>
-              <i class="fa-regular fa-heart item__icon" data-icon-type="icon-heart"></i>
-              <i class="fa-solid fa-scale-balanced item__icon item__icon_active" data-icon-type="icon-scales"></i>
+        <article class="product-tile">
+          <div class="product-tile__container">
+            <div class="product-tile__icons">
+              <i class="fa-regular fa-eye product-tile__icon" data-icon-type="icon-eye"></i>
+              <i class="fa-regular fa-heart product-tile__icon" data-icon-type="icon-heart"></i>
+              <i class="fa-solid fa-scale-balanced product-tile__icon product-tile__icon_active" data-icon-type="icon-scales"></i>
             </div>
-            <div class="item__image">
+            <div class="product-tile__image-container">
               <img
-                class="item__image-img" 
+                class="product-tile__image" 
                 src="assets/images/money.jpg" 
                 alt="«Money» by Yuval Noah Harari" 
                 title="«Money» by Yuval Noah Harari" 
               >
             </div>
-            <div class="item__about">
-              <p class="item__type">Book</p>
+            <div class="product-tile__about">
+              <div class="product-tile__type">Book</div>
               <!-- Rating: 2.9 -->
               <div 
-                class="item__rating rating" 
+                class="product-tile__rating rating" 
                 style="background: linear-gradient(to right, rgb(255, 215, 72) 58%, rgb(239, 239, 239) 58%);"
               >
                 <i class="fa-solid fa-star rating__star"></i>
@@ -489,25 +489,25 @@
                 <i class="fa-solid fa-star rating__star"></i>
                 <i class="fa-solid fa-star rating__star"></i>
               </div>
-              <p class="item__title">Money</p>
-              <div class="item__price-container">
-                <p class="item__price item__price_current">$19.99</p>
+              <h2 class="product-tile__title">Money</h2>
+              <div class="product-tile__price-container">
+                <div class="product-tile__price product-tile__price_current">$19.99</div>
               </div>
             </div>
           </div>
-          <button class="item__button fa-solid fa-bag-shopping">Add to cart</button>
+          <button class="product-tile__button button fa-solid fa-bag-shopping">Add to cart</button>
         </article>
-      </section>
+      </div>
     </div>
   </main>
   <footer class="footer">
     <div class="footer__container container">
       <div class="footer__info">
         <a class="footer__link link" href="https://expert-soft.net/" target="_blank">
-          <img class="link-img" src="assets/images/logo.png" alt="Logo Expert Soft" title="Logo Expert Soft">
+          <img class="link__image" src="assets/images/logo.png" alt="Logo Expert Soft" title="Logo Expert Soft">
         </a>
         <a class="footer__link link" href="https://github.com/Daryaisme" target="_blank">
-          <img class="link-img" src="assets/images/github_logo.png" alt="Logo GitHub" title="Logo GitHub">
+          <img class="link__image" src="assets/images/github_logo.png" alt="Logo GitHub" title="Logo GitHub">
         </a>
       </div>
     </div>
