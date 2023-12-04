@@ -1,17 +1,17 @@
 @font-face {
   font-family: Roboto;
-  src: url(assets/fonts/Roboto/Roboto-Regular.ttf);
+  src: url(../fonts/Roboto/Roboto-Regular.ttf);
   font-display: swap;
 }
 @font-face {
   font-family: Roboto;
-  src: url(assets/fonts/Roboto/Roboto-Bold.ttf);
+  src: url(../fonts/Roboto/Roboto-Bold.ttf);
   font-display: swap;
   font-weight: 700;
 }
 @font-face {
   font-family: Roboto;
-  src: url(assets/fonts/Roboto/Roboto-Thin.ttf);
+  src: url(../fonts/Roboto/Roboto-Thin.ttf);
   font-display: swap;
   font-weight: 200;
 }
@@ -193,6 +193,13 @@
   padding: 8px 12px;
   bottom: 10px;
 }
+.main__filter-sort {
+  margin-bottom: 20px;
+}
+.main__filter-sort-button {
+  display: inline;
+  padding: 5px 15px;
+}
 
 @media (min-width: 460px) {
   .main__product-tiles {
@@ -256,10 +263,15 @@
     margin-top: -50px;
   }
   .product-tile__button {
-    cursor: pointer;
     bottom: -29px;
   }
-  .product-tile__button:hover {
+  .button {
+    cursor: pointer;
+  }
+  .button:hover {
+    background: rgb(67, 128, 175);
+  }
+  .button_active {
     background: rgb(67, 128, 175);
   }
   .product-tile:hover .product-tile__button {
