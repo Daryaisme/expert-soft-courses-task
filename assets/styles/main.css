@@ -46,9 +46,13 @@
   vertical-align: middle;
   color: rgb(67, 128, 175);
 }
+.main {
+  min-height: calc(100vh - 83.2px - 79px);
+}
 .main__product-tiles {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   gap: 20px;
   flex-wrap: wrap;
 }
@@ -59,6 +63,9 @@
   background: rgb(240, 240, 240);
   text-align: center;
   overflow: hidden;
+}
+.product-tile_hidden {
+  opacity: 0.5;
 }
 .product-tile__container {
   position: relative;
@@ -185,6 +192,9 @@
   border: none;
   font-size: 12px;
 }
+.button_active {
+  background: rgb(67, 128, 175);
+}
 .product-tile__button {
   position: absolute;
   left: 50%;
@@ -199,6 +209,9 @@
 .main__filter-sort-button {
   display: inline;
   padding: 5px 15px;
+}
+.main__filter-sort-checkbox {
+  vertical-align: middle;
 }
 
 @media (min-width: 460px) {
@@ -269,9 +282,6 @@
     cursor: pointer;
   }
   .button:hover {
-    background: rgb(67, 128, 175);
-  }
-  .button_active {
     background: rgb(67, 128, 175);
   }
   .product-tile:hover .product-tile__button {

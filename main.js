@@ -1,46 +1,66 @@
-let books = [];
-let content = document.querySelector('.main__product-tiles');
-let bks = document.querySelectorAll('.product-tile');
+let productContent = document.querySelector('.main__product-tiles');
+let productItems = document.querySelectorAll('.product-tile');
 
-let fav = document.querySelectorAll('[data-icon-type="icon-heart"]');
-let favbool = Array.from(fav).map(el => el.classList.contains("product-tile__icon_active"));
+let heartIcons = document.querySelectorAll('[data-icon-type="icon-heart"]');
+let scalesIsons = document.querySelectorAll('[data-icon-type="icon-scales"]');
+let eyeIcons = document.querySelectorAll('[data-icon-type="icon-eye"]');
 
-let comp = document.querySelectorAll('[data-icon-type="icon-scales"]');
-let compbool = Array.from(comp).map(el => el.classList.contains("product-tile__icon_active"));
+let products = [];
+// let favBooks = [];
+// let comparisonBooks = [];
+// let shownBooks = [];
+for (let i = 0; i < productItems.length; i++) {
+  let product = {};
+  product['id'] = i + 1;
+  product['fav'] = heartIcons[i].classList.contains("product-tile__icon_active");
+  product['comparison'] = scalesIsons[i].classList.contains("product-tile__icon_active");
+  product['shown'] = eyeIcons[i].classList.contains("product-tile__icon_active");
+  product['HTML'] = productItems[i];
 
-let objs = document.querySelectorAll(".product-tile");
-for (let i = 0; i < objs.length; i++) {
-  let obj = {};
-  obj['fav'] = favbool[i];
-  obj['comp'] = compbool[i];
+  products.push(product);
 
-  books.push(obj);
+  // if (heartIcons[i].classList.contains("product-tile__icon_active")) favBooks.push(i + 1);
+  // if (scalesIsons[i].classList.contains("product-tile__icon_active")) comparisonBooks.push(i + 1);
+  // if (eyeIcons[i].classList.contains("product-tile__icon_active")) shownBooks.push(i + 1);
 }
 
-let btns = document.querySelectorAll('.main__filter-sort-button');
+let filterButtons = document.querySelectorAll('.main__filter-sort-button');
+filterButtons.forEach(btn => btn.addEventListener('click', handleFilterButtonClick));
 
-function handleClick() {
-  btns.forEach(el => el.classList.remove('button_active'));
+let newProducts = products;
+function handleFilterButtonClick() {
+  filterButtons.forEach(button => button.classList.remove('button_active'));
   this.classList.add('button_active');
 
-  content.innerHTML = "";
-
-  let bks2 = bks;
   switch (this.innerHTML) {
-    case "All":
-      for (let node of bks) content.appendChild(node);
-      break;
     case "Favourites":
-      bks2 = Array.from(bks).filter((el, ind) => books[ind].fav);
-      for (let node of bks2) content.appendChild(node);
+      newProducts = Array.from(products).filter((product) => product.fav);
+      handleCheckboxChange();
+      // setProducts(newBooks);
       break;
     case "Comparison":
-      bks2 = Array.from(bks).filter((el, ind) => books[ind].comp);
-      for (let node of bks2) content.appendChild(node);
+      newProducts = Array.from(products).filter((product) => product.comparison);
+      handleCheckboxChange();
+      // setProducts(newBooks);
       break;
+    case "All":
     default:
-      console.log('Tresh');
+      newProducts = products;
+      handleCheckboxChange();
+      // setProducts(newBooks);
+      break;
   }
 }
 
-btns.forEach(btn => btn.addEventListener('click', handleClick));
+function setProducts(products) {
+  productContent.innerHTML = "";
+  for (let product of products) productContent.appendChild(product.HTML);
+}
+
+let checkbox = document.querySelector('.main__filter-sort-checkbox');
+checkbox.addEventListener('change', handleCheckboxChange);
+
+function handleCheckboxChange() {
+  if (!checkbox.checked) setProducts(Array.from(newProducts).filter((product) => !product.shown));
+  else setProducts(newProducts);
+}
