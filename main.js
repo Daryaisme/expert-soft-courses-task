@@ -2,7 +2,7 @@ let productContent = document.querySelector('.main__product-tiles');
 let productItems = document.querySelectorAll('.product-tile');
 
 let heartIcons = document.querySelectorAll('[data-icon-type="icon-heart"]');
-let scalesIsons = document.querySelectorAll('[data-icon-type="icon-scales"]');
+let scalesIcons = document.querySelectorAll('[data-icon-type="icon-scales"]');
 let eyeIcons = document.querySelectorAll('[data-icon-type="icon-eye"]');
 
 let products = [];
@@ -13,7 +13,7 @@ for (let i = 0; i < productItems.length; i++) {
   let product = {};
   product['id'] = i + 1;
   product['fav'] = heartIcons[i].classList.contains("product-tile__icon_active");
-  product['comparison'] = scalesIsons[i].classList.contains("product-tile__icon_active");
+  product['comparison'] = scalesIcons[i].classList.contains("product-tile__icon_active");
   product['shown'] = eyeIcons[i].classList.contains("product-tile__icon_active");
   product['HTML'] = productItems[i];
 
@@ -24,8 +24,19 @@ for (let i = 0; i < productItems.length; i++) {
   // if (eyeIcons[i].classList.contains("product-tile__icon_active")) shownBooks.push(i + 1);
 }
 
+// heartIcons.forEach(icon => icon.addEventListener('click', handleIconClick));
+// scalesIcons.forEach(icon => icon.addEventListener('click', handleIconClick));
+// eyeIcons.forEach(icon => icon.addEventListener('click', handleIconClick));
+
+let checkbox = document.querySelector('.main__filter-sort-checkbox');
+checkbox.addEventListener('change', handleCheckboxChange);
+
+function handleCheckboxChange() {
+  updateProducts();
+}
+
 let filterButtons = document.querySelectorAll('.main__filter-sort-button');
-filterButtons.forEach(btn => btn.addEventListener('click', handleFilterButtonClick));
+filterButtons.forEach(buttons => buttons.addEventListener('click', handleFilterButtonClick));
 
 let newProducts = products;
 function handleFilterButtonClick() {
@@ -33,34 +44,30 @@ function handleFilterButtonClick() {
   this.classList.add('button_active');
 
   switch (this.innerHTML) {
-    case "Favourites":
-      newProducts = Array.from(products).filter((product) => product.fav);
-      handleCheckboxChange();
-      // setProducts(newBooks);
+    case 'Favourites':
+      updateProducts('fav');
       break;
-    case "Comparison":
-      newProducts = Array.from(products).filter((product) => product.comparison);
-      handleCheckboxChange();
-      // setProducts(newBooks);
+    case 'Comparison':
+      updateProducts('comparison');
       break;
-    case "All":
+    case 'All':
     default:
-      newProducts = products;
-      handleCheckboxChange();
-      // setProducts(newBooks);
+      updateProducts('all');
       break;
   }
 }
 
-function setProducts(products) {
-  productContent.innerHTML = "";
-  for (let product of products) productContent.appendChild(product.HTML);
+function updateProducts(property) {
+  if (property) {
+    if (property === 'all') newProducts = products;
+    else newProducts = Array.from(products).filter((product) => product[property]);
+  }
+
+  if (checkbox.checked) setProducts(newProducts);
+  else setProducts(Array.from(newProducts).filter((product) => !product.shown));
 }
 
-let checkbox = document.querySelector('.main__filter-sort-checkbox');
-checkbox.addEventListener('change', handleCheckboxChange);
-
-function handleCheckboxChange() {
-  if (!checkbox.checked) setProducts(Array.from(newProducts).filter((product) => !product.shown));
-  else setProducts(newProducts);
+function setProducts(products) {
+  productContent.innerHTML = '';
+  for (let product of products) productContent.appendChild(product.HTML);
 }
