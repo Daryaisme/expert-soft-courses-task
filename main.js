@@ -6,27 +6,57 @@ let scalesIcons = document.querySelectorAll('[data-icon-type="icon-scales"]');
 let eyeIcons = document.querySelectorAll('[data-icon-type="icon-eye"]');
 
 let products = [];
-// let favBooks = [];
-// let comparisonBooks = [];
-// let shownBooks = [];
 for (let i = 0; i < productItems.length; i++) {
   let product = {};
   product['id'] = i + 1;
-  product['fav'] = heartIcons[i].classList.contains("product-tile__icon_active");
-  product['comparison'] = scalesIcons[i].classList.contains("product-tile__icon_active");
-  product['shown'] = eyeIcons[i].classList.contains("product-tile__icon_active");
+  product['fav'] = heartIcons[i].classList.contains('product-tile__icon_active');
+  product['comparison'] = scalesIcons[i].classList.contains('product-tile__icon_active');
+  product['shown'] = eyeIcons[i].classList.contains('product-tile__icon_active');
   product['HTML'] = productItems[i];
 
   products.push(product);
-
-  // if (heartIcons[i].classList.contains("product-tile__icon_active")) favBooks.push(i + 1);
-  // if (scalesIsons[i].classList.contains("product-tile__icon_active")) comparisonBooks.push(i + 1);
-  // if (eyeIcons[i].classList.contains("product-tile__icon_active")) shownBooks.push(i + 1);
 }
+let newProducts = products;
 
-// heartIcons.forEach(icon => icon.addEventListener('click', handleIconClick));
-// scalesIcons.forEach(icon => icon.addEventListener('click', handleIconClick));
-// eyeIcons.forEach(icon => icon.addEventListener('click', handleIconClick));
+productItems.forEach(icon => icon.addEventListener('click', function (event) {
+  let icon = event.target;
+  if (icon.classList.contains('product-tile__icon')) {
+    let id = Array.from(productItems).indexOf(event.currentTarget) + 1;
+
+    if (icon.classList.contains('product-tile__icon_active')) event.target.classList.remove('product-tile__icon_active');
+    else event.target.classList.add('product-tile__icon_active');
+
+    switch (event.target.dataset.iconType) {
+      case 'icon-heart':
+        products[id - 1].fav = icon.classList.contains('product-tile__icon_active');
+        break;
+      case 'icon-scales':
+        products[id - 1].comparison = icon.classList.contains('product-tile__icon_active');
+        break;
+      case 'icon-eye':
+        if (icon.classList.contains('product-tile__icon_active')) event.currentTarget.classList.add('product-tile_hidden');
+        else event.currentTarget.classList.remove('product-tile_hidden');
+
+        products[id - 1].shown = icon.classList.contains('product-tile__icon_active');
+        break;
+    }
+
+    let activeFilterButton = document.querySelector('.main__filter-sort-button.button.button_active');
+    switch (activeFilterButton.innerHTML) {
+      case 'Favourites':
+        updateProducts('fav');
+        break;
+      case 'Comparison':
+        updateProducts('comparison');
+        break;
+      case 'All':
+      default:
+        updateProducts('all');
+        break;
+    }
+  }
+}));
+
 
 let checkbox = document.querySelector('.main__filter-sort-checkbox');
 checkbox.addEventListener('change', handleCheckboxChange);
@@ -38,7 +68,6 @@ function handleCheckboxChange() {
 let filterButtons = document.querySelectorAll('.main__filter-sort-button');
 filterButtons.forEach(buttons => buttons.addEventListener('click', handleFilterButtonClick));
 
-let newProducts = products;
 function handleFilterButtonClick() {
   filterButtons.forEach(button => button.classList.remove('button_active'));
   this.classList.add('button_active');
