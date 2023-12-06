@@ -1,17 +1,17 @@
 @font-face {
   font-family: Roboto;
-  src: url(assets/fonts/Roboto/Roboto-Regular.ttf);
+  src: url(../fonts/Roboto/Roboto-Regular.ttf);
   font-display: swap;
 }
 @font-face {
   font-family: Roboto;
-  src: url(assets/fonts/Roboto/Roboto-Bold.ttf);
+  src: url(../fonts/Roboto/Roboto-Bold.ttf);
   font-display: swap;
   font-weight: 700;
 }
 @font-face {
   font-family: Roboto;
-  src: url(assets/fonts/Roboto/Roboto-Thin.ttf);
+  src: url(../fonts/Roboto/Roboto-Thin.ttf);
   font-display: swap;
   font-weight: 200;
 }
@@ -46,9 +46,13 @@
   vertical-align: middle;
   color: rgb(67, 128, 175);
 }
+.main {
+  min-height: calc(100vh - 83.2px - 79px);
+}
 .main__product-tiles {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   gap: 20px;
   flex-wrap: wrap;
 }
@@ -59,6 +63,9 @@
   background: rgb(240, 240, 240);
   text-align: center;
   overflow: hidden;
+}
+.product-tile_hidden {
+  opacity: 0.5;
 }
 .product-tile__container {
   position: relative;
@@ -185,6 +192,9 @@
   border: none;
   font-size: 12px;
 }
+.button_active {
+  background: rgb(67, 128, 175);
+}
 .product-tile__button {
   position: absolute;
   left: 50%;
@@ -192,6 +202,57 @@
   width: 140px;
   padding: 8px 12px;
   bottom: 10px;
+}
+.main__filter-sort {
+  margin-bottom: 20px;
+}
+.main__filter-sort-button {
+  display: inline;
+  padding: 5px 10px;
+}
+.checkbox-container {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+}
+.checkbox {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.checkbox__label {
+  display: inline-block;
+  position: absolute;
+  z-index: -2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px rgb(205, 205, 205) solid;
+  background: rgb(239, 239, 239);
+}
+.checkbox:checked ~ .checkbox__label {
+  border-color: rgb(85, 182, 255);
+  background: rgb(186, 223, 251);
+}
+.checkbox-checkmark {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  text-align: center;
+  z-index: -1;
+  font-size: 13px;
+  color: rgb(22, 136, 223);
+  opacity: 0;
+  padding: 1.5px;
+}
+.checkbox:checked ~ .checkbox-checkmark {
+  opacity: 1;
 }
 
 @media (min-width: 460px) {
@@ -256,10 +317,12 @@
     margin-top: -50px;
   }
   .product-tile__button {
-    cursor: pointer;
     bottom: -29px;
   }
-  .product-tile__button:hover {
+  .button {
+    cursor: pointer;
+  }
+  .button:hover {
     background: rgb(67, 128, 175);
   }
   .product-tile:hover .product-tile__button {
@@ -270,6 +333,9 @@
   }
   .header__title-abbreviation {
     font-size: 36px;
+  }
+  .main__filter-sort-button {
+    padding: 5px 15px;
   }
 }
 
