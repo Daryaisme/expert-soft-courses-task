@@ -13,7 +13,7 @@ const products = Array.from(productItems).map((product, ind) => ({
 }));
 let currProducts = products;
 
-const checkbox = document.querySelector('.main__filter-sort-checkbox');
+const checkbox = document.querySelector('.filter-sort__checkbox');
 checkbox.addEventListener('change', handleCheckboxChange);
 
 function handleCheckboxChange() {
