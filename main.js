@@ -1,93 +1,93 @@
-let productContent = document.querySelector('.main__product-tiles');
-let productItems = document.querySelectorAll('.product-tile');
+const productsContainer = document.querySelector('.main__product-tiles');
+const productItems = document.querySelectorAll('.product-tile');
 
-let heartIcons = document.querySelectorAll('[data-icon-type="icon-heart"]');
-let scalesIcons = document.querySelectorAll('[data-icon-type="icon-scales"]');
-let eyeIcons = document.querySelectorAll('[data-icon-type="icon-eye"]');
+const heartIcons = document.querySelectorAll('[data-icon-type="icon-heart"]');
+const scalesIcons = document.querySelectorAll('[data-icon-type="icon-scales"]');
+const eyeIcons = document.querySelectorAll('[data-icon-type="icon-eye"]');
 
-let products = [];
-for (let i = 0; i < productItems.length; i++) {
-  let product = {};
-  product['id'] = i + 1;
-  product['fav'] = heartIcons[i].classList.contains('product-tile__icon_active');
-  product['comparison'] = scalesIcons[i].classList.contains('product-tile__icon_active');
-  product['shown'] = eyeIcons[i].classList.contains('product-tile__icon_active');
-  product['HTML'] = productItems[i];
-
-  products.push(product);
-}
+const products = Array.from(productItems).map((product, ind) => ({
+  id: ind + 1,
+  fav: heartIcons[ind].classList.contains('product-tile__icon_active'),
+  comparison: scalesIcons[ind].classList.contains('product-tile__icon_active'),
+  shown: eyeIcons[ind].classList.contains('product-tile__icon_active'),
+  html: product,
+}));
 let newProducts = products;
 
-productItems.forEach(icon => icon.addEventListener('click', function (event) {
-  let icon = event.target;
-  if (icon.classList.contains('product-tile__icon')) {
-    let id = Array.from(productItems).indexOf(event.currentTarget) + 1;
+heartIcons.forEach(icon => icon.addEventListener('click', handleIconClick));
+scalesIcons.forEach(icon => icon.addEventListener('click', handleIconClick));
+eyeIcons.forEach(icon => icon.addEventListener('click', handleIconClick));
 
-    if (icon.classList.contains('product-tile__icon_active')) event.target.classList.remove('product-tile__icon_active');
-    else event.target.classList.add('product-tile__icon_active');
+function handleIconClick (e) {
+  const icon = e.target;
 
-    switch (event.target.dataset.iconType) {
-      case 'icon-heart':
-        products[id - 1].fav = icon.classList.contains('product-tile__icon_active');
-        break;
-      case 'icon-scales':
-        products[id - 1].comparison = icon.classList.contains('product-tile__icon_active');
-        break;
-      case 'icon-eye':
-        if (icon.classList.contains('product-tile__icon_active')) event.currentTarget.classList.add('product-tile_hidden');
-        else event.currentTarget.classList.remove('product-tile_hidden');
+  icon.classList.contains('product-tile__icon_active') 
+    ? icon.classList.remove('product-tile__icon_active') 
+    : icon.classList.add('product-tile__icon_active');
 
-        products[id - 1].shown = icon.classList.contains('product-tile__icon_active');
-        break;
-    }
+  let id;
+  switch (icon.dataset.iconType) {
+    case 'icon-heart':
+      id = getProductId(heartIcons);
+      products[id - 1].fav = icon.classList.contains('product-tile__icon_active');
+      break;
+    case 'icon-scales':
+      id = getProductId(scalesIcons);
+      products[id - 1].comparison = icon.classList.contains('product-tile__icon_active');
+      break;
+    case 'icon-eye':
+    default:
+      id = getProductId(eyeIcons);
 
-    let activeFilterButton = document.querySelector('.main__filter-sort-button.button.button_active');
-    switch (activeFilterButton.innerHTML) {
-      case 'Favourites':
-        updateProducts('fav');
-        break;
-      case 'Comparison':
-        updateProducts('comparison');
-        break;
-      case 'All':
-      default:
-        updateProducts('all');
-        break;
-    }
+      if (icon.classList.contains('product-tile__icon_active')) products[id - 1].html.classList.add('product-tile_hidden');
+      else products[id - 1].html.classList.remove('product-tile_hidden');
+
+      products[id - 1].shown = icon.classList.contains('product-tile__icon_active');
   }
-}));
+
+  const activeFilterButton = document.querySelector('.main__filter-sort-button.button.button_active');
+  updateProducts(activeFilterButton);
+
+  function getProductId(icons) {
+    return Array.from(icons).indexOf(e.target) + 1;
+  }
+};
 
 
-let checkbox = document.querySelector('.main__filter-sort-checkbox');
+const checkbox = document.querySelector('.main__filter-sort-checkbox');
 checkbox.addEventListener('change', handleCheckboxChange);
 
 function handleCheckboxChange() {
   updateProducts();
 }
 
-let filterButtons = document.querySelectorAll('.main__filter-sort-button');
+const filterButtons = document.querySelectorAll('.main__filter-sort-button');
 filterButtons.forEach(buttons => buttons.addEventListener('click', handleFilterButtonClick));
 
-function handleFilterButtonClick() {
-  filterButtons.forEach(button => button.classList.remove('button_active'));
-  this.classList.add('button_active');
+function handleFilterButtonClick(e) {
+  const button = e.target;
 
-  switch (this.innerHTML) {
-    case 'Favourites':
-      updateProducts('fav');
-      break;
-    case 'Comparison':
-      updateProducts('comparison');
-      break;
-    case 'All':
-    default:
-      updateProducts('all');
-      break;
-  }
+  filterButtons.forEach(button => button.classList.remove('button_active'));
+  button.classList.add('button_active');
+
+  updateProducts(button);
 }
 
-function updateProducts(property) {
-  if (property) {
+function updateProducts(filterButton) {
+  if (filterButton) {
+    let property;
+    switch (filterButton.innerHTML) {
+      case 'Favourites':
+        property = 'fav';
+        break;
+      case 'Comparison':
+        property = 'comparison';
+        break;
+      case 'All':
+      default:
+        property = 'all';
+    }
+
     if (property === 'all') newProducts = products;
     else newProducts = Array.from(products).filter((product) => product[property]);
   }
@@ -97,6 +97,6 @@ function updateProducts(property) {
 }
 
 function setProducts(products) {
-  productContent.innerHTML = '';
-  for (let product of products) productContent.appendChild(product.HTML);
+  productsContainer.innerHTML = '';
+  for (let product of products) productsContainer.appendChild(product.html);
 }
