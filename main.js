@@ -24,12 +24,15 @@ function handleIconClick (e) {
     ? icon.classList.remove('product-tile__icon_active') 
     : icon.classList.add('product-tile__icon_active');
 
+  const activeFilterButton = document.querySelector('.main__filter-sort-button.button.button_active');
   switch (icon.dataset.iconType) {
     case 'icon-heart':
       toggleProductActive(heartIcons, 'fav');
+      if (activeFilterButton.innerHTML === 'Favourites') updateProducts(activeFilterButton);
       break;
     case 'icon-scales':
       toggleProductActive(scalesIcons, 'comparison');
+      if (activeFilterButton.innerHTML === 'Comparison') updateProducts(activeFilterButton);
       break;
     case 'icon-eye':
     default:
@@ -40,9 +43,6 @@ function handleIconClick (e) {
 
       toggleProductActive(eyeIcons, 'shown');
   }
-
-  const activeFilterButton = document.querySelector('.main__filter-sort-button.button.button_active');
-  updateProducts(activeFilterButton);
 
   function toggleProductActive(icons, property) {
     let id = getProductId(icons);
