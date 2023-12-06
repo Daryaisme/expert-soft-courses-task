@@ -7,12 +7,11 @@ const eyeIcons = document.querySelectorAll('[data-icon-type="icon-eye"]');
 
 const products = Array.from(productItems).map((product, ind) => ({
   id: ind + 1,
-  fav: heartIcons[ind].classList.contains('product-tile__icon_active'),
-  comparison: scalesIcons[ind].classList.contains('product-tile__icon_active'),
-  shown: eyeIcons[ind].classList.contains('product-tile__icon_active'),
-  html: product,
+  fav: false,
+  comparison: false,
+  shown: false,
 }));
-let newProducts = products;
+let currProducts = products;
 
 heartIcons.forEach(icon => icon.addEventListener('click', handleIconClick));
 scalesIcons.forEach(icon => icon.addEventListener('click', handleIconClick));
@@ -25,28 +24,30 @@ function handleIconClick (e) {
     ? icon.classList.remove('product-tile__icon_active') 
     : icon.classList.add('product-tile__icon_active');
 
-  let id;
   switch (icon.dataset.iconType) {
     case 'icon-heart':
-      id = getProductId(heartIcons);
-      products[id - 1].fav = icon.classList.contains('product-tile__icon_active');
+      toggleProductActive(heartIcons, 'fav');
       break;
     case 'icon-scales':
-      id = getProductId(scalesIcons);
-      products[id - 1].comparison = icon.classList.contains('product-tile__icon_active');
+      toggleProductActive(scalesIcons, 'comparison');
       break;
     case 'icon-eye':
     default:
-      id = getProductId(eyeIcons);
+      let id = getProductId(eyeIcons);
 
-      if (icon.classList.contains('product-tile__icon_active')) products[id - 1].html.classList.add('product-tile_hidden');
-      else products[id - 1].html.classList.remove('product-tile_hidden');
+      if (icon.classList.contains('product-tile__icon_active')) productItems[id - 1].classList.add('product-tile_hidden');
+      else productItems[id - 1].classList.remove('product-tile_hidden');
 
-      products[id - 1].shown = icon.classList.contains('product-tile__icon_active');
+      toggleProductActive(eyeIcons, 'shown');
   }
 
   const activeFilterButton = document.querySelector('.main__filter-sort-button.button.button_active');
   updateProducts(activeFilterButton);
+
+  function toggleProductActive(icons, property) {
+    let id = getProductId(icons);
+    products[id - 1][property] = icon.classList.contains('product-tile__icon_active');
+  }
 
   function getProductId(icons) {
     return Array.from(icons).indexOf(e.target) + 1;
@@ -88,15 +89,15 @@ function updateProducts(filterButton) {
         property = 'all';
     }
 
-    if (property === 'all') newProducts = products;
-    else newProducts = Array.from(products).filter((product) => product[property]);
+    if (property === 'all') currProducts = products;
+    else currProducts = Array.from(products).filter((product) => product[property]);
   }
 
-  if (checkbox.checked) setProducts(newProducts);
-  else setProducts(Array.from(newProducts).filter((product) => !product.shown));
+  if (checkbox.checked) setProducts(currProducts);
+  else setProducts(Array.from(currProducts).filter((product) => !product.shown));
 }
 
 function setProducts(products) {
   productsContainer.innerHTML = '';
-  for (let product of products) productsContainer.appendChild(product.html);
+  for (let product of products) productsContainer.appendChild(productItems[product.id - 1]);
 }
