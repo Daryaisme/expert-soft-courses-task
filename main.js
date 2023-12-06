@@ -13,6 +13,13 @@ const products = Array.from(productItems).map((product, ind) => ({
 }));
 let currProducts = products;
 
+const checkbox = document.querySelector('.filter-sort__checkbox');
+checkbox.addEventListener('change', handleCheckboxChange);
+
+function handleCheckboxChange() {
+  updateProducts();
+}
+
 heartIcons.forEach(icon => icon.addEventListener('click', handleIconClick));
 scalesIcons.forEach(icon => icon.addEventListener('click', handleIconClick));
 eyeIcons.forEach(icon => icon.addEventListener('click', handleIconClick));
@@ -24,12 +31,15 @@ function handleIconClick (e) {
     ? icon.classList.remove('product-tile__icon_active') 
     : icon.classList.add('product-tile__icon_active');
 
+  const activeFilterButton = document.querySelector('.main__filter-sort-button.button.button_active');
   switch (icon.dataset.iconType) {
     case 'icon-heart':
       toggleProductActive(heartIcons, 'fav');
+      if (activeFilterButton.innerHTML === 'Favourites') updateProducts(activeFilterButton);
       break;
     case 'icon-scales':
       toggleProductActive(scalesIcons, 'comparison');
+      if (activeFilterButton.innerHTML === 'Comparison') updateProducts(activeFilterButton);
       break;
     case 'icon-eye':
     default:
@@ -39,10 +49,8 @@ function handleIconClick (e) {
       else productItems[id - 1].classList.remove('product-tile_hidden');
 
       toggleProductActive(eyeIcons, 'shown');
+      if (!checkbox.checked) updateProducts();
   }
-
-  const activeFilterButton = document.querySelector('.main__filter-sort-button.button.button_active');
-  updateProducts(activeFilterButton);
 
   function toggleProductActive(icons, property) {
     let id = getProductId(icons);
@@ -53,14 +61,6 @@ function handleIconClick (e) {
     return Array.from(icons).indexOf(e.target) + 1;
   }
 };
-
-
-const checkbox = document.querySelector('.main__filter-sort-checkbox');
-checkbox.addEventListener('change', handleCheckboxChange);
-
-function handleCheckboxChange() {
-  updateProducts();
-}
 
 const filterButtons = document.querySelectorAll('.main__filter-sort-button');
 filterButtons.forEach(buttons => buttons.addEventListener('click', handleFilterButtonClick));
