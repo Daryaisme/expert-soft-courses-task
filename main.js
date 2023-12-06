@@ -13,6 +13,13 @@ const products = Array.from(productItems).map((product, ind) => ({
 }));
 let currProducts = products;
 
+const checkbox = document.querySelector('.main__filter-sort-checkbox');
+checkbox.addEventListener('change', handleCheckboxChange);
+
+function handleCheckboxChange() {
+  updateProducts();
+}
+
 heartIcons.forEach(icon => icon.addEventListener('click', handleIconClick));
 scalesIcons.forEach(icon => icon.addEventListener('click', handleIconClick));
 eyeIcons.forEach(icon => icon.addEventListener('click', handleIconClick));
@@ -42,6 +49,7 @@ function handleIconClick (e) {
       else productItems[id - 1].classList.remove('product-tile_hidden');
 
       toggleProductActive(eyeIcons, 'shown');
+      if (!checkbox.checked) updateProducts();
   }
 
   function toggleProductActive(icons, property) {
@@ -53,14 +61,6 @@ function handleIconClick (e) {
     return Array.from(icons).indexOf(e.target) + 1;
   }
 };
-
-
-const checkbox = document.querySelector('.main__filter-sort-checkbox');
-checkbox.addEventListener('change', handleCheckboxChange);
-
-function handleCheckboxChange() {
-  updateProducts();
-}
 
 const filterButtons = document.querySelectorAll('.main__filter-sort-button');
 filterButtons.forEach(buttons => buttons.addEventListener('click', handleFilterButtonClick));

@@ -1,19 +1,19 @@
 @font-face {
-  font-family: Roboto;
-  src: url(../fonts/Roboto/Roboto-Regular.ttf);
+  font-family: 'Roboto';
+  src: url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu5mxKOzY.woff2) format('woff2');
   font-display: swap;
 }
 @font-face {
-  font-family: Roboto;
-  src: url(../fonts/Roboto/Roboto-Bold.ttf);
+  font-family: 'Roboto';
+  src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfABc4EsA.woff2) format('woff2');
   font-display: swap;
   font-weight: 700;
 }
 @font-face {
-  font-family: Roboto;
-  src: url(../fonts/Roboto/Roboto-Thin.ttf);
+  font-family: 'Roboto';
+  src: url(https://fonts.gstatic.com/s/roboto/v30/KFOkCnqEu92Fr1MmgVxMIzIFKw.woff2) format('woff2');
   font-display: swap;
-  font-weight: 200;
+  font-weight: 100;
 }
 
 * {
@@ -28,9 +28,9 @@
 .container {
   width: 90vw;
 }
-.header .container,
-.footer .container,
-.main .container {
+.header__container,
+.footer__container,
+.main__container {
   margin: 0 auto;
 }
 .header__container,
@@ -130,7 +130,7 @@
 .product-tile__type {
   color: rgb(173, 173, 173);
   text-transform: uppercase;
-  font-weight: 200;
+  font-weight: 100;
   font-size: 12px;
 }
 .product-tile__title {
@@ -162,7 +162,7 @@
 .product-tile__price_old {
   text-decoration: line-through;
 }
-.product-tile__price_current:not(:only-child) {
+.product-tile__price:not(:only-child):not(.product-tile__price_old) {
   color: rgb(255, 59, 59);
   margin-right: 10px;
 }
@@ -177,9 +177,6 @@
   height: 35px;
 }
 .button {
-  display: flex;
-  justify-content: center;
-  gap: 5px;
   text-transform: uppercase;
   background: rgb(98, 162, 210);
   color: rgb(255, 255, 255);
@@ -190,6 +187,9 @@
   background: rgb(67, 128, 175);
 }
 .product-tile__button {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -209,6 +209,8 @@
   display: inline-block;
   width: 16px;
   height: 16px;
+}
+.main__checkbox-container {
   vertical-align: middle;
 }
 .checkbox {
