@@ -5,13 +5,30 @@ const heartIcons = document.querySelectorAll('[data-icon-type="icon-heart"]');
 const scalesIcons = document.querySelectorAll('[data-icon-type="icon-scales"]');
 const eyeIcons = document.querySelectorAll('[data-icon-type="icon-eye"]');
 
-const products = Array.from(productItems).map((product, ind) => ({
+const products = JSON.parse(localStorage.getItem('products')) 
+  ?? Array.from(productItems).map((product, ind) => ({
   id: ind + 1,
   fav: false,
   comparison: false,
   shown: false,
 }));
+
+heartIcons.forEach((icon, ind) => {
+  if (products[ind].fav) icon.classList.add('product-tile__icon_active');
+});
+scalesIcons.forEach((icon, ind) => {
+  if (products[ind].comparison) icon.classList.add('product-tile__icon_active');
+});
+eyeIcons.forEach((icon, ind) => {
+  if (products[ind].shown) {
+    icon.classList.add('product-tile__icon_active');
+    productItems[ind].classList.add('product-tile_hidden');
+  }
+});
+
 let currProducts = products;
+
+if(!localStorage.getItem('products')) localStorage.setItem('products', JSON.stringify(products));
 
 const checkbox = document.querySelector('.filter-sort__checkbox');
 checkbox.addEventListener('change', handleCheckboxChange);
@@ -55,6 +72,7 @@ function handleIconClick (e) {
   function toggleProductActive(icons, property) {
     let id = getProductId(icons);
     products[id - 1][property] = icon.classList.contains('product-tile__icon_active');
+    localStorage.setItem('products', JSON.stringify(products));
   }
 
   function getProductId(icons) {
