@@ -13,18 +13,21 @@ const products = JSON.parse(localStorage.getItem('products'))
   shown: false,
 }));
 
-heartIcons.forEach((icon, ind) => {
-  if (products[ind].fav) icon.classList.add('product-tile__icon_active');
-});
-scalesIcons.forEach((icon, ind) => {
-  if (products[ind].comparison) icon.classList.add('product-tile__icon_active');
-});
-eyeIcons.forEach((icon, ind) => {
-  if (products[ind].shown) {
-    icon.classList.add('product-tile__icon_active');
-    productItems[ind].classList.add('product-tile_hidden');
-  }
-});
+window.addEventListener('load', updateProductTilesState);
+function updateProductTilesState() {
+  heartIcons.forEach((icon, ind) => {
+    if (products[ind].fav) icon.classList.add('product-tile__icon_active');
+  });
+  scalesIcons.forEach((icon, ind) => {
+    if (products[ind].comparison) icon.classList.add('product-tile__icon_active');
+  });
+  eyeIcons.forEach((icon, ind) => {
+    if (products[ind].shown) {
+      icon.classList.add('product-tile__icon_active');
+      productItems[ind].classList.add('product-tile_hidden');
+    }
+  });
+}
 
 let currProducts = products;
 
