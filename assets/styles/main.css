@@ -232,6 +232,14 @@
   border: 1px rgb(205, 205, 205) solid;
   background: rgb(239, 239, 239);
 }
+.checkbox__label::after {
+  content: attr(data-content);
+  position: absolute;
+  white-space: nowrap;
+  line-height: 100%;
+  left: 130%;
+  font-size: 14px;
+}
 .checkbox:checked ~ .checkbox__label {
   border-color: rgb(85, 182, 255);
   background: rgb(186, 223, 251);
