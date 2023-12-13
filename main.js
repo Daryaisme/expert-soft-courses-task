@@ -6,25 +6,25 @@ const scalesIcons = document.querySelectorAll('[data-icon-type="icon-scales"]');
 const eyeIcons = document.querySelectorAll('[data-icon-type="icon-eye"]');
 
 const products = JSON.parse(localStorage.getItem('products')) 
-  ?? Array.from(productItems).map((product, ind) => ({
-  id: ind + 1,
-  fav: false,
-  comparison: false,
-  shown: false,
+  ?? Array.from(productItems).map((product, index) => ({
+  id: index + 1,
+  isFavourite: false,
+  isComparison: false,
+  isHidden: false,
 }));
 
 window.addEventListener('load', updateProductTilesState);
 function updateProductTilesState() {
-  heartIcons.forEach((icon, ind) => {
-    if (products[ind].fav) icon.classList.add('product-tile__icon_active');
+  heartIcons.forEach((icon, index) => {
+    if (products[index].isFavourite) icon.classList.add('product-tile__icon_active');
   });
-  scalesIcons.forEach((icon, ind) => {
-    if (products[ind].comparison) icon.classList.add('product-tile__icon_active');
+  scalesIcons.forEach((icon, index) => {
+    if (products[index].isComparison) icon.classList.add('product-tile__icon_active');
   });
-  eyeIcons.forEach((icon, ind) => {
-    if (products[ind].shown) {
+  eyeIcons.forEach((icon, index) => {
+    if (products[index].isHidden) {
       icon.classList.add('product-tile__icon_active');
-      productItems[ind].classList.add('product-tile_hidden');
+      productItems[index].classList.add('product-tile_hidden');
     }
   });
 }
@@ -51,14 +51,14 @@ function handleIconClick (e) {
     ? icon.classList.remove('product-tile__icon_active') 
     : icon.classList.add('product-tile__icon_active');
 
-  const activeFilterButton = document.querySelector('.main__filter-sort-button.button.button_active');
+  const activeFilterButton = document.querySelector('.button_active');
   switch (icon.dataset.iconType) {
     case 'icon-heart':
-      toggleProductActive(heartIcons, 'fav');
+      switchProductState(heartIcons, 'isFavourite');
       if (activeFilterButton.innerHTML === 'Favourites') updateProducts(activeFilterButton);
       break;
     case 'icon-scales':
-      toggleProductActive(scalesIcons, 'comparison');
+      switchProductState(scalesIcons, 'isComparison');
       if (activeFilterButton.innerHTML === 'Comparison') updateProducts(activeFilterButton);
       break;
     case 'icon-eye':
@@ -68,11 +68,11 @@ function handleIconClick (e) {
       if (icon.classList.contains('product-tile__icon_active')) productItems[id - 1].classList.add('product-tile_hidden');
       else productItems[id - 1].classList.remove('product-tile_hidden');
 
-      toggleProductActive(eyeIcons, 'shown');
+      switchProductState(eyeIcons, 'isHidden');
       if (!checkbox.checked) updateProducts();
   }
 
-  function toggleProductActive(icons, property) {
+  function switchProductState(icons, property) {
     let id = getProductId(icons);
     products[id - 1][property] = icon.classList.contains('product-tile__icon_active');
     localStorage.setItem('products', JSON.stringify(products));
@@ -81,7 +81,7 @@ function handleIconClick (e) {
   function getProductId(icons) {
     return Array.from(icons).indexOf(e.target) + 1;
   }
-};
+}
 
 const filterButtons = document.querySelectorAll('.main__filter-sort-button');
 filterButtons.forEach(buttons => buttons.addEventListener('click', handleFilterButtonClick));
@@ -100,10 +100,10 @@ function updateProducts(filterButton) {
     let property;
     switch (filterButton.innerHTML) {
       case 'Favourites':
-        property = 'fav';
+        property = 'isFavourite';
         break;
       case 'Comparison':
-        property = 'comparison';
+        property = 'isComparison';
         break;
       case 'All':
       default:
@@ -114,11 +114,11 @@ function updateProducts(filterButton) {
     else currProducts = Array.from(products).filter((product) => product[property]);
   }
 
-  if (checkbox.checked) setProducts(currProducts);
-  else setProducts(Array.from(currProducts).filter((product) => !product.shown));
+  if (checkbox.checked) updateProductsListView(currProducts);
+  else updateProductsListView(Array.from(currProducts).filter((product) => !product.isHidden));
 }
 
-function setProducts(products) {
+function updateProductsListView(products) {
   productsContainer.innerHTML = '';
   for (let product of products) productsContainer.appendChild(productItems[product.id - 1]);
 }
