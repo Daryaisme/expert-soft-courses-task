@@ -1,9 +1,21 @@
+const FAVOURITE = 'favourite';
+const COMPARISON = 'comparison';
+const ALL = 'all';
+
 const productsContainer = document.querySelector('.main__product-tiles');
-let productItems = document.querySelectorAll('.product-tile');
+const productItems = document.querySelectorAll('.product-tile');
 
 const heartIcons = document.querySelectorAll('[data-icon-type="icon-heart"]');
 const scalesIcons = document.querySelectorAll('[data-icon-type="icon-scales"]');
 const eyeIcons = document.querySelectorAll('[data-icon-type="icon-eye"]');
+
+const checkbox = document.querySelector('.filter-sort__checkbox');
+checkbox.addEventListener('change', handleCheckboxChange);
+
+let activeFilterButtonType = ALL;
+
+const filterButtons = document.querySelectorAll('.main__filter-sort-button');
+filterButtons.forEach(buttons => buttons.addEventListener('click', handleFilterButtonClick));
 
 const products = JSON.parse(localStorage.getItem('products')) 
   ?? Array.from(productItems).map(product => ({
@@ -12,9 +24,13 @@ const products = JSON.parse(localStorage.getItem('products'))
   isComparison: false,
   isHidden: false,
 }));
+
 if(!localStorage.getItem('products')) localStorage.setItem('products', JSON.stringify(products));
 
 window.addEventListener('load', updateProductTilesState);
+
+productItems.forEach(product => product.addEventListener('click', handleProductClick));
+
 function updateProductTilesState() {
   productItems.forEach(product => {
     const productIndex = product.dataset.productId - 1;
@@ -25,16 +41,9 @@ function updateProductTilesState() {
   });
 }
 
-let currProducts = products;
-
-const checkbox = document.querySelector('.filter-sort__checkbox');
-checkbox.addEventListener('change', handleCheckboxChange);
-
 function handleCheckboxChange() {
-  updateProducts();
+  updateProductList(activeFilterButtonType);
 }
-
-productItems.forEach(product => product.addEventListener('click', handleProductClick));
 
 function handleProductClick (e) {
   const icon = e.target;
@@ -42,35 +51,22 @@ function handleProductClick (e) {
   const product = e.currentTarget;
   const productIndex = product.dataset.productId - 1;
 
-  const activeFilterButtonType = document.querySelector('.button_active').dataset.buttonType;
   switch (iconType) {
     case 'icon-heart':
       products[productIndex].isFavourite = product.classList.toggle('product-tile_favourite');
-      updateProductsInLocalStorage();
-      
-      if (activeFilterButtonType === 'favourites-button') updateProducts(activeFilterButtonType);
+      if (activeFilterButtonType === FAVOURITE) updateProductList(FAVOURITE);
       break;
     case 'icon-scales':
       products[productIndex].isComparison = product.classList.toggle('product-tile_comparison');
-      updateProductsInLocalStorage();
-
-      if (activeFilterButtonType === 'comparison-button') updateProducts(activeFilterButtonType);
+      if (activeFilterButtonType === COMPARISON) updateProductList(COMPARISON);
       break;
     case 'icon-eye':
-    default:
       products[productIndex].isHidden = product.classList.toggle('product-tile_hidden');
-      updateProductsInLocalStorage();
-
-      if (!checkbox.checked) updateProducts();
+      if (!checkbox.checked) updateProductList(activeFilterButtonType);
   }
 
-  function updateProductsInLocalStorage() {
-    localStorage.setItem('products', JSON.stringify(products));
-  }
+  localStorage.setItem('products', JSON.stringify(products));
 }
-
-const filterButtons = document.querySelectorAll('.main__filter-sort-button');
-filterButtons.forEach(buttons => buttons.addEventListener('click', handleFilterButtonClick));
 
 function handleFilterButtonClick(e) {
   const button = e.target;
@@ -79,33 +75,28 @@ function handleFilterButtonClick(e) {
   filterButtons.forEach(button => button.classList.remove('button_active'));
   button.classList.add('button_active');
 
-  updateProducts(buttonType);
+  activeFilterButtonType = buttonType;
+
+  updateProductList(buttonType);
 }
 
-function updateProducts(filterButtonType) {
-  if (filterButtonType) {
-    let property;
-    switch (filterButtonType) {
-      case 'favourites-button':
-        property = 'isFavourite';
-        break;
-      case 'comparison-button':
-        property = 'isComparison';
-        break;
-      case 'all-button':
-      default:
-        property = 'all';
-    }
+function updateProductList(filterButtonType) {
+  let currProducts = products;
 
-    if (property === 'all') currProducts = products;
-    else currProducts = Array.from(products).filter((product) => product[property]);
+  const properties = {
+    [FAVOURITE]: 'isFavourite',
+    [COMPARISON]: 'isComparison',
+    [ALL]: 'all',
   }
+  const property = properties[filterButtonType];
 
-  if (checkbox.checked) updateProductsListView(currProducts);
-  else updateProductsListView(Array.from(currProducts).filter((product) => !product.isHidden));
+  if (property !== 'all') currProducts = Array.from(products).filter(product => product[property]);
+  if (!checkbox.checked) currProducts = Array.from(currProducts).filter((product) => !product.isHidden);
+
+  updateProductListView(currProducts);
 }
 
-function updateProductsListView(products) {
+function updateProductListView(products) {
   productsContainer.innerHTML = '';
   for (let product of products) productsContainer.appendChild(productItems[product.id - 1]);
 }
