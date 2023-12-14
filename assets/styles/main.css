@@ -103,7 +103,9 @@
   background: rgb(239, 239, 239);
   color: rgb(122, 122, 122);
 }
-.product-tile__icon_active {
+.product-tile_hidden .product-tile__icon[data-icon-type="icon-eye"],
+.product-tile_favourite .product-tile__icon[data-icon-type="icon-heart"],
+.product-tile_comparison .product-tile__icon[data-icon-type="icon-scales"] {
   background: rgb(22, 136, 223);
   color: rgb(255, 255, 255);
 }
@@ -304,7 +306,9 @@
     background: rgb(255, 255, 255);
     color: rgb(22, 136, 223);
   }
-  .product-tile__icon_active:hover {
+  .product-tile_hidden .product-tile__icon[data-icon-type="icon-eye"]:hover,
+  .product-tile_favourite .product-tile__icon[data-icon-type="icon-heart"]:hover,
+  .product-tile_comparison .product-tile__icon[data-icon-type="icon-scales"]:hover {
     color: rgb(239, 239, 239);
     background: rgb(122, 122, 122);
   }
