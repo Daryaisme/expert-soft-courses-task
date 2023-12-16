@@ -5,10 +5,6 @@ const ALL = 'all';
 const productsContainer = document.querySelector('.main__product-tiles');
 const productItems = document.querySelectorAll('.product-tile');
 
-const heartIcons = document.querySelectorAll('[data-icon-type="icon-heart"]');
-const scalesIcons = document.querySelectorAll('[data-icon-type="icon-scales"]');
-const eyeIcons = document.querySelectorAll('[data-icon-type="icon-eye"]');
-
 const checkbox = document.querySelector('.filter-sort__checkbox');
 checkbox.addEventListener('change', handleCheckboxChange);
 
@@ -17,15 +13,16 @@ let activeFilterButtonType = ALL;
 const filterButtons = document.querySelectorAll('.main__filter-sort-button');
 filterButtons.forEach(buttons => buttons.addEventListener('click', handleFilterButtonClick));
 
-const products = JSON.parse(localStorage.getItem('products')) 
-  ?? Array.from(productItems).map(product => ({
-  id: +product.dataset.productId,
-  isFavourite: false,
-  isComparison: false,
-  isHidden: false,
-}));
-
-if(!localStorage.getItem('products')) localStorage.setItem('products', JSON.stringify(products));
+let products = JSON.parse(localStorage.getItem('products'));
+if (!products) {
+  products = Array.from(productItems).map(product => ({
+    id: +product.dataset.productId,
+    isFavourite: false,
+    isComparison: false,
+    isHidden: false,
+  }));
+  localStorage.setItem('products', JSON.stringify(products));
+}
 
 window.addEventListener('load', updateProductTilesState);
 
